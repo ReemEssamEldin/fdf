@@ -1,5 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/24 14:08:08 by reldahli          #+#    #+#              #
+#    Updated: 2024/07/24 15:31:21 by reldahli         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = gcc
-CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L/usr/X11/lib -lmlx -lXext -lX11
 LIBFT				= ./libft/libft.a
 
