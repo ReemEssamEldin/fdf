@@ -6,7 +6,7 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:43:24 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/24 15:07:16 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:36:09 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	init_fdf(t_fdf *fdf, char *filename)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
 	if (!fdf->img)
 		exit(1);
-	fdf->addr = mlx_get_data_addr(fdf->img, &fdf->bits_per_pixel, &fdf->line_length, &fdf->endian);
+	fdf->addr = mlx_get_data_addr(fdf->img, &fdf->bits_per_pixel,
+			&fdf->line_length, &fdf->endian);
 }
