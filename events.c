@@ -6,12 +6,10 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:10:58 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/24 16:21:22 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:23:16 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
 #include "fdf.h"
 
 int	handle_key(int key, t_fdf *fdf)
@@ -27,13 +25,10 @@ int	handle_key(int key, t_fdf *fdf)
 int	close_window(t_fdf *fdf)
 {
 	free_memory(fdf);
-
 	mlx_destroy_image(fdf->mlx, fdf->img);
 	mlx_destroy_window(fdf->mlx, fdf->win);
 	mlx_destroy_display(fdf->mlx);
-
 	free(fdf->mlx);
 	free(fdf);
-
 	exit(0);
 }
