@@ -6,7 +6,7 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:34:19 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/24 17:26:37 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:06:31 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ typedef struct s_point
 	int	color;
 }	t_point;
 
+typedef struct s_math
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+}	t_math;
+
 typedef struct s_fdf
 {
 	void	*mlx;
@@ -58,5 +67,7 @@ int		handle_key(int key, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
 void	free_memory(t_fdf *fdf);
 t_point	project(t_fdf *fdf, int x, int y);
-
+t_math	get_line_math(t_point p1, t_point p2);
+int		get_movement_direction(int p1, int p2);
+int		calculate_error_term(int dx, int dy);
 #endif

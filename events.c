@@ -6,7 +6,7 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:10:58 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/25 11:23:16 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:27:57 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_key(int key, t_fdf *fdf)
 {
-	printf("Key pressed: %d\n", key);
 	if (key == ESCAPE_KEY)
 	{
 		close_window(fdf);

@@ -6,7 +6,7 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:11:00 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/24 14:30:49 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:48:08 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ char	**read_file(char *filename)
 	if (!map)
 		return (NULL);
 	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		map[i++] = line;
+		line = get_next_line(fd);
 	}
 	map[i] = NULL;
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:21:43 by reldahli          #+#    #+#             */
-/*   Updated: 2024/07/24 14:17:33 by reldahli         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:28:54 by reldahli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,33 @@ void	put_pixel(t_fdf *fdf, int x, int y, int color)
 
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		pixel_addr = fdf->addr + (y * fdf->line_length) + (x * (fdf->bits_per_pixel / 8));
+		pixel_addr = fdf->addr + (y * fdf->line_length)
+			+ (x * (fdf->bits_per_pixel / 8));
 		*(unsigned int *)pixel_addr = color;
 	}
 }
 
 void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
+	t_math	math;
+	int		err_term;
 
-	dx = abs(p2.x - p1.x);
-	dy = abs(p2.y - p1.y);
-	sx = p1.x < p2.x ? 1 : -1;
-	sy = p1.y < p2.y ? 1 : -1;
-	err = (dx > dy ? dx : -dy) / 2;
+	math = get_line_math(p1, p2);
 	while (1)
 	{
 		put_pixel(fdf, p1.x, p1.y, p1.color);
 		if (p1.x == p2.x && p1.y == p2.y)
 			break ;
-		e2 = err;
-		if (e2 > -dx)
+		err_term = math.err;
+		if (err_term > -math.dx)
 		{
-			err -= dy;
-			p1.x += sx;
+			math.err -= math.dy;
+			p1.x += math.sx;
 		}
-		if (e2 < dy)
+		if (err_term < math.dy)
 		{
-			err += dx;
-			p1.y += sy;
+			math.err += math.dx;
+			p1.y += math.sy;
 		}
 	}
 }
@@ -73,8 +66,8 @@ int	render(t_fdf *fdf)
 				draw_line(fdf, project(fdf, x, y), project(fdf, x, y + 1));
 			x++;
 		}
-		mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 		y++;
+		mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 	}
 	return (1);
 }

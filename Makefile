@@ -6,7 +6,7 @@
 #    By: reldahli <reldahli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 14:08:08 by reldahli          #+#    #+#              #
-#    Updated: 2024/07/24 17:28:12 by reldahli         ###   ########.fr        #
+#    Updated: 2024/07/25 12:22:37 by reldahli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L/usr/X11/lib -lmlx -lXext -lX11
 LIBFT				= ./libft/libft.a
 
-SRCS = main.c init.c events.c free_memory.c parse_data.c project.c read_file.c render.c
+SRCS = main.c init.c events.c free_memory.c parse_data.c project.c read_file.c render.c math.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = fdf
