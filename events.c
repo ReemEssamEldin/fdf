@@ -26,14 +26,14 @@ int	handle_key(int key, t_fdf *fdf)
 
 int	close_window(t_fdf *fdf)
 {
+	free_memory(fdf);
+
 	mlx_destroy_image(fdf->mlx, fdf->img);
 	mlx_destroy_window(fdf->mlx, fdf->win);
 	mlx_destroy_display(fdf->mlx);
-	// free(fdf->mlx);
-	// free(fdf->win);
-	// free(fdf->img);
-	// free(fdf->addr);
-	// free(fdf->z_matrix);
+
+	free(fdf->mlx);
 	free(fdf);
+
 	exit(0);
 }
